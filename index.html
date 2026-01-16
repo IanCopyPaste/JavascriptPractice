@@ -134,8 +134,10 @@
             <div id="noteResult"></div>
         </div>
 
+
+
         <button onclick="openModal()">Open Popup</button>
-        
+
         <div class="overlay" id="overlay">
             <div class="modal">
                 <h2>Add Note</h2>
@@ -144,6 +146,36 @@
             </div>
         </div>
 
+        <br>
+        <br>
+
+        <div class="btn-rollHand">
+            <button onclick="rollHand()">
+                <p>Roll Hand</p>
+            </button>
+        </div>
+        <div class="jankepon-container" id="jankenpon-container">
+            <h2>Jankenpon</h2>
+            <p class="txt-warn" id="txt-warn"></p>
+            <input type="text" id="display-hand" readonly>
+            <div class="score-container">
+                <p id="winScore">Wins: </p>
+                <p id="loseScore">Losses: </p>
+                <p id="tieScore">Tie: </p>
+            </div>
+            <button onclick="btnPaper()" class="btn-hands">
+                <img src="assetsImage/icons8-hand-100.png" alt="">
+                <p>Paper</p>
+            </button>
+            <button onclick="btnScissors()" class="btn-hands">
+                <img src="assetsImage/icons8-hand-scissors-100.png" alt="">
+                <p>Scissor</p>
+            </button>
+            <button onclick="btnRock()" class="btn-hands">
+                <img src="assetsImage/icons8-rock-hand-100.png" alt="">
+                <p>Rock</p>
+            </button>
+        </div>
     </main>
     <script src="script.js"></script>
 </body>

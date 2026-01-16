@@ -93,7 +93,7 @@ function convertTemp() {
     const showTemp = document.getElementById("show-temp");
     let temp;
 
-    if(isNaN(txtInpt.value)){
+    if (isNaN(txtInpt.value)) {
         alert("Please enter a valid number!")
         return;
     }
@@ -106,45 +106,50 @@ function convertTemp() {
         temp = Number(txtInpt.value);
         temp = (temp - 32) * (5 / 9);
         showTemp.textContent = temp.toFixed(1) + "°C";
-    }else{
+    } else {
         showTemp.textContent = "Please select a unit."
     }
 }
 
 let cars = ["toyota", "mistubishi", "hyundai", "nissan", "ford"]
 let carsWord = cars[0];
-let lenlen = [...carsWord]; 
+let lenlen = [...carsWord];
 
 console.log(lenlen.join('-'));
 console.log(cars.join(" "))
 
 function sum(...numbers) {
     let result = 0;
-    for(let numbs of numbers){
+    for (let numbs of numbers) {
         result += numbs;
     }
-    return result/numbers.length;
+    return result / numbers.length;
 }
-const res = sum(1,2,3,4,5);
+const res = sum(1, 2, 3, 4, 5);
 
 console.log(res)
 
 function rollDice(params) {
-    const numOfDice = document.getElementById("numOfDice").value;
+    const numOfDice = document.getElementById("numOfDice");
     const diceResult = document.getElementById("diceResult");
     const diceImages = document.getElementById("diceImages");
+
+    if (numOfDice.value > 6) {
+        alert("Input too high!");
+        return;
+    }
 
     const values = [];
     const images = [];
 
-    for(let i = 0; i < numOfDice; i++){
+    for (let i = 0; i < numOfDice; i++) {
         const value = Math.floor(Math.random() * 6) + 1;
         values.push(value);
         images.push(`<img src="assetsImage/${value}.png" alt="Dice ${value}">`)
     }
 
     diceResult.textContent = `dice: ${values.join(", ")}`
-    diceImages.innerHTML = images.join("");
+    diceImages.innerHTML = images.join(" ");
     //diceImages.innerHTML = "<h1>Niggas</h1>";
 }
 function addImages() {
@@ -153,8 +158,9 @@ function addImages() {
     diceImages.innerHTML += (image + "niggas");
 }
 
+let notes = [];
+
 function addNote() {
-    
     const note = document.getElementById("addNote").value;
     const noteResult = document.getElementById("noteResult");
     const noteContainer = `<p>${note}</p>`
@@ -163,12 +169,169 @@ function addNote() {
         alert("pls enter a corresponding text");
         return;
     }
-    noteResult.innerHTML += noteContainer;
+
+    noteResult.innerHTML += notes;
 }
+
+
 
 function closeModal() {
     document.getElementById("overlay").style.display = "none";
 }
 function openModal() {
     document.getElementById("overlay").style.display = "flex";
+}
+
+let objects = ["paper", "scissors", "book", "pen", "crayon"];
+
+objects.forEach(capitalized);
+objects.forEach(display);
+
+function capitalized(element, index, array) {
+    array[index] = element.charAt(0).toUpperCase() + element.slice(1);
+}
+
+function display(element) {
+    console.log(element);
+}
+
+
+
+let countries = ["philippines", "china", "indonesia", "malaysia", "singapore"]
+const wordResult = document.getElementById("wordResult");
+
+countries.forEach(countriesInterate);
+countries.forEach(displayCountries);
+
+function countriesInterate(element, index, array) {
+    array[index] = element.charAt(0).toUpperCase() + element.slice(1);
+}
+
+function displayCountries(element) {
+    console.log(element);
+}
+
+const numsss = [1, 2, 3, 4, 5];
+
+numsss.forEach((element, index) => {
+    setTimeout(() => {
+        console.log(element);
+    }, index * 1000);
+});
+
+const person = {
+    fname: "ian",
+    lname: "adote"
+}
+console.log(person.fname)
+
+class People {
+    constructor(name, gender) {
+        this.name = name;
+        this.gender = gender;
+    }
+
+    displayPerson() {
+        console.log(`Name: ${this.name}`);
+        console.log(`Gender: ${this.gender}`);
+    }
+}
+
+const people1 = new People("ian", "Male");
+
+people1.displayPerson();
+
+class User {
+    static userCount = 0;
+
+    constructor(username) {
+        this.username = username;
+        User.userCount++;
+    }
+}
+
+const user1 = new User("Ian");
+const user2 = new User("Ron");
+const user3 = new User("Poison");
+
+console.log(`Hello! ${user1.username}!`);
+console.log(`Hello! ${user2.username}!`);
+console.log(`Hello! ${user3.username}!`);
+console.log(`User Count: ${User.userCount}`)
+
+function paper() {
+    return "paper";
+}
+
+//bato bato pick game basic fundamentals
+const displayHand = document.getElementById("display-hand");
+const txtWarn = document.getElementById("txt-warn");
+const winScore = document.getElementById("winScore");
+const loseScore = document.getElementById("loseScore");
+const tieScore = document.getElementById("tieScore");
+
+let winS = 0, loseS = 0, tieS = 0;
+
+let cpuHand;
+let playerHand;
+
+let isRolled = false;
+
+const hands = ["Paper","Rock","Scissors"];
+
+function randomHand() {
+    const value = hands[Math.floor(Math.random() * 3) + 0];
+    return value
+}
+
+function rollHand() {
+    cpuHand = randomHand()
+    displayHand.value = cpuHand;
+    txtWarn.textContent = ""
+    isRolled = true;   
+}
+
+function checkHand() {
+    if(cpuHand == undefined){
+        alert("No Enemy Input Yet");
+        return;
+    }else if(!isRolled){
+        alert("Roll the hand first!");
+        return;
+    }
+
+    if (cpuHand === playerHand) {
+        tieS += 1;
+        tieScore.textContent = `Tie: ${tieS}`;
+        txtWarn.textContent = "Tie Score!"
+    } else if (
+        (playerHand === "Rock" && cpuHand === "Scissors") ||
+        (playerHand === "Paper" && cpuHand === "Rock") ||
+        (playerHand === "Scissors" && cpuHand === "Paper")
+    ) {
+        winS += 1;
+        winScore.textContent = `Wins: ${winS}`;
+        txtWarn.textContent = "You Win!"
+    } else {
+        loseS += 1;
+        loseScore.textContent = `Losses: ${loseS}`;
+        txtWarn.textContent = "You Lose!"
+    }
+
+    isRolled = false;
+}
+
+function btnPaper() {
+    playerHand = "Paper"
+    checkHand()
+}
+
+function btnRock() {
+    playerHand = "Rock"
+    checkHand()
+}
+
+function btnScissors() {
+    playerHand = "Scissors"
+    checkHand()
 }
