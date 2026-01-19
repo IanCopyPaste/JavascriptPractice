@@ -1,3 +1,4 @@
+console.time("Program Started");
 const tomato = document.getElementById("tomato");
 const potato = document.getElementById("potato");
 const male = document.getElementById("male");
@@ -134,11 +135,6 @@ function rollDice(params) {
     const diceResult = document.getElementById("diceResult");
     const diceImages = document.getElementById("diceImages");
 
-    if (numOfDice.value > 6) {
-        alert("Input too high!");
-        return;
-    }
-
     const values = [];
     const images = [];
 
@@ -150,7 +146,6 @@ function rollDice(params) {
 
     diceResult.textContent = `dice: ${values.join(", ")}`
     diceImages.innerHTML = images.join(" ");
-    //diceImages.innerHTML = "<h1>Niggas</h1>";
 }
 function addImages() {
     const diceImages = document.getElementById("diceImages");
@@ -277,7 +272,7 @@ let playerHand;
 
 let isRolled = false;
 
-const hands = ["Paper","Rock","Scissors"];
+const hands = ["Paper", "Rock", "Scissors"];
 
 function randomHand() {
     const value = hands[Math.floor(Math.random() * 3) + 0];
@@ -288,18 +283,17 @@ function rollHand() {
     cpuHand = randomHand()
     displayHand.value = cpuHand;
     txtWarn.textContent = ""
-    isRolled = true;   
+    isRolled = true;
 }
 
 function checkHand() {
-    if(cpuHand == undefined){
+    if (cpuHand == undefined) {
         alert("No Enemy Input Yet");
         return;
-    }else if(!isRolled){
+    } else if (!isRolled) {
         alert("Roll the hand first!");
         return;
     }
-
     if (cpuHand === playerHand) {
         tieS += 1;
         tieScore.textContent = `Tie: ${tieS}`;
@@ -320,18 +314,134 @@ function checkHand() {
 
     isRolled = false;
 }
-
 function btnPaper() {
     playerHand = "Paper"
     checkHand()
 }
-
 function btnRock() {
     playerHand = "Rock"
     checkHand()
 }
-
 function btnScissors() {
     playerHand = "Scissors"
     checkHand()
 }
+
+//navigate landing page sample
+function toProj3(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+}
+
+
+const txtPeople = document.getElementById("people-container");
+const ian = {
+    fullname: "Ian Adote",
+    age: 19,
+    isStudent: true,
+    hobbies: ["karate", "jellyfish", "cooking"],
+    address: {
+        street: "Howmart Rd.",
+        city: "Quezon City",
+        country: "Philippines"
+
+    }
+};
+
+const ron = {
+    fullname: "Ron Adote",
+    age: 19,
+    isStudent: true,
+    hobbies: ["crive", "travel", "eating"],
+    address: {
+        street: "Howmart Rd.",
+        city: "Quezon City",
+        country: "Philippines"
+
+    }
+};
+const poison = {
+    fullname: "fatty poison",
+    age: 19,
+    isStudent: false,
+    hobbies: ["game", "eat", "sleep"],
+    address: {
+        street: "Nigga Rd.",
+        city: "O'block City",
+        country: "Philippines"
+
+    }
+};
+
+let people = [ian, ron, poison];
+let containers = [];
+
+for (let index = 0; index < people.length; index++) {
+    const person = people[index];
+    const dbContainer = `
+    <div>
+            <h3>${person.fullname}</h3>
+            <p>Age: ${person.age}</p>
+            <p>Student: ${person.isStudent}</p>
+            <p>Hobbies: ${person.hobbies.join(", ")}</p>
+            <p>Address: ${person.address.street}, ${person.address.city}, ${person.address.country}</p>
+            <button onclick="deletePerson()"><h2>Delete</h2></button>
+    </div>
+            `;
+    containers.push(dbContainer);
+    txtPeople.innerHTML += containers[index];
+}
+
+function deletePerson(params) {
+    console.log("niggas")
+}
+
+const date = new Date();
+const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+const year = date.getFullYear();
+const month = date.getMonth();
+const day = date.getDate();
+const dayName = date.getDay();
+
+console.log(year);
+console.log(month);
+console.log(day);
+console.log(days[dayName])
+
+const fill = document.querySelector(".toFill");
+
+fill.innerHTML = `<h1>BOOM!</h1>`
+
+function addNums() {
+    let num = 0;
+
+    function addNum() {
+       num += 1;
+       console.log(num); 
+    }
+    
+    function minusNum() {
+       num -= 1;
+       console.log(num); 
+    }
+    
+    function getNum() {
+        console.log(`Total number is ${num}`);
+    }
+    return {addNum,minusNum,getNum};
+}
+
+const nums = addNums();
+
+nums.addNum();
+nums.addNum();
+nums.minusNum();
+nums.getNum();
+
+
+function boom() {
+    setTimeout(() => {
+       fill.innerHTML += `<img src="assetsImage/giphy.gif" alt="?">` 
+    }, 2000);
+}
+console.timeEnd("Program Started");
