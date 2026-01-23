@@ -451,3 +451,45 @@ main #convertBtn {
     color: black;
 
 }
+.lbl-stopwatch{
+    text-align: center;
+    font-size: 60px;
+    color: rgb(97, 97, 97);
+}
+.stopwatch-container{
+    padding: 30px;
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 50px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 30px;
+    margin-top: 10px;
+    width: 50%;
+}
+.stopwatch-container h1{
+    text-align: center;
+}
+.btnStopwatch-containers{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.btnStopwatch-containers button{
+    width: 120px;
+    margin: 10px 0px 0px 0px; 
+}
+.btnStopwatch-containers #start{
+    background-color: green;
+}
+.btnStopwatch-containers #stop{
+    background-color: red;
+}
+.btnStopwatch-containers #reset{
+    background-color: rgb(72, 72, 255);
+}
+.container{
+    margin: 10px 0px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px;
+}

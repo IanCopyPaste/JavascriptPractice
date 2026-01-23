@@ -1,3 +1,4 @@
+//import { addNumber } from "./MathUtil.js";
 console.time("Program Started");
 const tomato = document.getElementById("tomato");
 const potato = document.getElementById("potato");
@@ -416,19 +417,19 @@ function addNums() {
     let num = 0;
 
     function addNum() {
-       num += 1;
-       console.log(num); 
+        num += 1;
+        console.log(num);
     }
-    
+
     function minusNum() {
-       num -= 1;
-       console.log(num); 
+        num -= 1;
+        console.log(num);
     }
-    
+
     function getNum() {
         console.log(`Total number is ${num}`);
     }
-    return {addNum,minusNum,getNum};
+    return { addNum, minusNum, getNum };
 }
 
 const nums = addNums();
@@ -439,9 +440,56 @@ nums.minusNum();
 nums.getNum();
 
 
-function boom() {
+function booms() {
     setTimeout(() => {
-       fill.innerHTML += `<img src="assetsImage/giphy.gif" alt="?">` 
+        fill.innerHTML += `<img src="assetsImage/giphy.gif" alt="?">`
     }, 2000);
 }
 console.timeEnd("Program Started");
+
+//console.log(addNumber(2,5));
+
+console.log(document);
+
+const myHeading = document.getElementById("myHeading");
+
+myHeading.textContent += " " + "Ian Adote";
+myHeading.style.backgroundColor = "red";
+myHeading.style.color = "white";
+myHeading.style.padding = "10px";
+myHeading.style.margin = "20px auto";
+myHeading.style.width = "50%";
+myHeading.style.textAlign = "center";
+
+const myfruits = document.querySelectorAll(".fruits");
+
+myfruits.forEach(element=>{
+    element.style.backgroundColor = "red";
+    element.style.color = "white";
+});
+
+const h4Elements = document.getElementsByTagName("h4");
+const liElements = document.getElementsByTagName("li");
+
+console.log(h4Elements);
+
+h4Elements[0].style.backgroundColor = "yellow"
+h4Elements[1].style.backgroundColor = "green"
+
+for(let element of liElements){
+    element.style.backgroundColor = "black"
+    element.style.color = "white"
+}
+
+const btnSubmit = document.querySelector("#submit");
+const txtUser = document.querySelector("#user");
+
+function submit() {
+    console.log(txtUser.value);
+}
+
+const container = document.querySelectorAll(".container");
+
+container.forEach(element =>{
+    console.log(element.lastElementChild.textContent);
+});
