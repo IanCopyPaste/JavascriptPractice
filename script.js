@@ -396,6 +396,7 @@ function deletePerson(params) {
     console.log("niggas")
 }
 
+
 const date = new Date();
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
@@ -463,7 +464,7 @@ myHeading.style.textAlign = "center";
 
 const myfruits = document.querySelectorAll(".fruits");
 
-myfruits.forEach(element=>{
+myfruits.forEach(element => {
     element.style.backgroundColor = "red";
     element.style.color = "white";
 });
@@ -476,7 +477,7 @@ console.log(h4Elements);
 h4Elements[0].style.backgroundColor = "yellow"
 h4Elements[1].style.backgroundColor = "green"
 
-for(let element of liElements){
+for (let element of liElements) {
     element.style.backgroundColor = "black"
     element.style.color = "white"
 }
@@ -489,7 +490,108 @@ function submit() {
 }
 
 const container = document.querySelectorAll(".container");
+let containerJar = [];
 
-container.forEach(element =>{
-    console.log(element.lastElementChild.textContent);
+container.forEach(element => {
+    containerJar.push(element);
+});
+
+containerJar.forEach(element => {
+    element.style.backgroundColor = "red";
+});
+
+
+function addToList() {
+
+    const fContainer = document.querySelector(".fruits-container");
+    const txtInput = String(document.querySelector("#txtInput").value)
+
+    const txtList = document.createElement("li");
+
+    txtList.textContent = txtInput;
+    txtList.style.backgroundColor = "yellow";
+    txtList.style.border = "1px solid black";
+    txtList.style.width = "100%";
+    txtList.id = "txtListt";
+
+    fContainer.append(txtList);
+    console.log("added");
+}
+
+function removeToList() {
+
+    const fContainer1 = document.querySelector(".fruits-container");
+    const fContainer = document.querySelectorAll("#txtListt");
+    const txtInput = String(document.querySelector("#txtInput").value.trim());
+    let isFound = false;
+
+    fContainer.forEach(element => {
+        if (element.textContent.trim() === txtInput) {
+            fContainer1.removeChild(element);
+            isFound = true;
+        }
+    });
+    if (!isFound) {
+        alert("No Matches Found");
+    }
+}
+
+function addTask() {
+    const taskContainer = document.querySelector(".task-container");
+    const txtInput = document.querySelector("#txtInput");
+    const taskBox = document.createElement("div");
+    const txtH1 = document.createElement("h1");
+    const delBtn = document.createElement("Button");
+
+    txtH1.textContent = txtInput.value;
+
+    taskBox.style.backgroundColor = "peachpuff";
+    taskBox.style.width = "200px";
+    taskBox.style.height = "auto";
+    taskBox.style.border = "1px solid black";
+    taskBox.style.padding = "5px";
+
+    delBtn.textContent = "Delete"
+    delBtn.onclick = () => {
+        console.log(txtH1.textContent);
+        taskBox.remove()
+    };
+    
+
+    taskBox.append(txtH1.textContent.trim());
+    taskBox.append(delBtn);
+
+    taskContainer.append(taskBox);
+}
+
+const eventBox = document.querySelector(".event-box");
+const txtEvent = document.querySelector(".event-box h1");
+let isCLicked = false;
+
+eventBox.addEventListener("click", (event) => {
+    if (isCLicked) {
+        txtEvent.textContent = "peachpuff";
+        event.target.style.backgroundColor = "peachpuff";
+        isCLicked = false;
+    } else {
+        txtEvent.textContent = "red";
+        event.target.style.backgroundColor = "red";
+        isCLicked = true;
+    }
+});
+let isDark = false;
+
+const btnDarkmode = document.querySelector("#btnDarkmode");
+const lblDarkmode = document.querySelector("#btnDarkmode h1");
+
+btnDarkmode.addEventListener("click", () => {
+    if (!isDark) {
+        document.body.style.backgroundColor = 'black'
+        lblDarkmode.textContent = "Light Mode"
+        isDark = true;
+    } else {
+        document.body.style.backgroundColor = 'white'
+        lblDarkmode.textContent = "Dark Mode"
+        isDark = false;
+    }
 });
