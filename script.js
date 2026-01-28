@@ -564,21 +564,18 @@ function addTask() {
     taskContainer.append(taskBox);
 }
 
-const eventBox = document.querySelector(".event-box");
-const txtEvent = document.querySelector(".event-box h1");
-let isCLicked = false;
+const eventBoxes = document.querySelectorAll(".event-box");
 
-eventBox.addEventListener("click", (event) => {
-    if (isCLicked) {
-        txtEvent.textContent = "peachpuff";
-        event.target.style.backgroundColor = "peachpuff";
-        isCLicked = false;
-    } else {
-        txtEvent.textContent = "red";
-        event.target.style.backgroundColor = "red";
-        isCLicked = true;
-    }
+eventBoxes.forEach(box => {
+    box.addEventListener("click", () => {
+        eventBoxes.forEach(b => {
+            b.style.backgroundColor = "peachpuff";
+        });
+        box.style.backgroundColor = "red";
+    });
 });
+
+
 let isDark = false;
 
 const btnDarkmode = document.querySelector("#btnDarkmode");
